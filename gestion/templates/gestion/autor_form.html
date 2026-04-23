@@ -1,9 +1,11 @@
 {% extends "gestion/base.html" %}
 {% block title %}{% if object %}Editar autor{% else %}Nuevo autor{% endif %}{% endblock %}
 {% block content %}
-<h1 class="h3 mb-3">{% if object %}Editar autor{% else %}Nuevo autor{% endif %}</h1>
-<div class="card shadow-sm">
-  <div class="card-body">
+{% include "gestion/includes/back_strip.html" with section_label="Autores" %}
+<p class="text-uppercase small text-muted fw-semibold mb-1 letter-space">Autores</p>
+<h1 class="h3 mb-4 text-slate font-display">{% if object %}Editar autor{% else %}Nuevo autor{% endif %}</h1>
+<div class="card card-list border-0">
+  <div class="card-body p-4 p-md-5">
     <form method="post" novalidate>
       {% csrf_token %}
       {% if form.non_field_errors %}
@@ -17,8 +19,8 @@
           {% if field.help_text %}<div class="form-text">{{ field.help_text }}</div>{% endif %}
         </div>
       {% endfor %}
-      <button type="submit" class="btn btn-primary">Guardar</button>
-      <a class="btn btn-link" href="{% url 'lista_autores' %}">Cancelar</a>
+      <button type="submit" class="btn btn-brand rounded-pill px-4">Guardar</button>
+      <a class="btn btn-link text-muted" href="{% url 'lista_autores' %}">Cancelar</a>
     </form>
   </div>
 </div>

@@ -1,13 +1,94 @@
 {% extends "gestion/base.html" %}
-{% block title %}Inicio · Gestión de libros{% endblock %}
+{% load static %}
+{% block title %}Inicio · BiblioCatálogo{% endblock %}
 {% block content %}
-<div class="p-4 p-md-5 bg-white rounded-3 shadow-sm">
-  <h1 class="h2 mb-3">Taller Django — Libros y autores</h1>
-  <p class="lead text-secondary mb-4">Autores con vistas por funciones; libros con vistas por clases (<code>ListView</code>, <code>CreateView</code>, <code>UpdateView</code>, <code>DeleteView</code>).</p>
-  <div class="d-flex flex-wrap gap-2">
-    <a class="btn btn-primary" href="{% url 'lista_autores' %}">Ver autores</a>
-    <a class="btn btn-outline-primary" href="{% url 'lista_libros' %}">Ver libros</a>
-    <a class="btn btn-outline-secondary" href="/admin/">Panel admin</a>
+
+<section class="home-hero row align-items-center g-4 g-lg-5 mb-5 mb-lg-6">
+  <div class="col-lg-6 text-center text-lg-start">
+    <span class="home-kicker d-inline-block mb-3">Biblioteca · catálogo en línea</span>
+    <h1 class="home-title font-display mb-3">Donde los autores y los libros se encuentran</h1>
+    <p class="home-lead text-muted mb-4">
+      Un espacio limpio para consultar, registrar y actualizar fichas: autores con su perfil y obras enlazadas a cada libro.
+    </p>
+    <div class="d-flex flex-wrap justify-content-center justify-content-lg-start gap-2">
+      <a class="btn btn-brand btn-lg rounded-pill px-4" href="{% url 'lista_autores' %}">Explorar autores</a>
+      <a class="btn btn-outline-brand btn-lg rounded-pill px-4" href="{% url 'lista_libros' %}">Ver catálogo</a>
+    </div>
+  </div>
+  <div class="col-lg-6">
+    <figure class="home-hero-visual mb-0">
+      <div class="home-hero-frame">
+        <img
+          src="{% static 'gestion/img/hero.jpg' %}"
+          width="960"
+          height="720"
+          class="home-hero-img"
+          alt="Interior de biblioteca con estanterías"
+          loading="eager">
+      </div>
+      <figcaption class="home-hero-caption small text-muted mt-3 text-center text-lg-start">
+        Lectura y orden — referencia visual para tu taller Django.
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+<div class="home-section-label text-center mb-4">
+  <span class="font-display section-pill">Áreas del sistema</span>
+</div>
+
+<div class="row g-4 justify-content-center align-items-stretch pb-2">
+  <div class="col-lg-6">
+    <article class="feature-card h-100">
+      <div class="feature-card__media">
+        <img
+          src="{% static 'gestion/img/autores.jpg' %}"
+          alt=""
+          class="feature-card__photo"
+          width="900"
+          height="600"
+          loading="lazy">
+        <div class="feature-card__shade feature-card__shade--a" aria-hidden="true"></div>
+        <div class="feature-card__badge">Perfiles</div>
+        <h2 class="feature-card__title font-display">Autores</h2>
+      </div>
+      <div class="feature-card__body">
+        <p class="feature-card__text text-muted mb-4">
+          Datos de contacto, nacionalidad y biografía. Todo lo necesario para identificar a quien escribe cada obra.
+        </p>
+        <div class="d-grid gap-2">
+          <a class="btn btn-brand rounded-pill py-2 fw-semibold" href="{% url 'lista_autores' %}">Ir a autores</a>
+          <a class="btn btn-link text-decoration-none text-secondary-emphasis small py-1" href="{% url 'crear_autor' %}">Añadir autor nuevo →</a>
+        </div>
+      </div>
+    </article>
+  </div>
+
+  <div class="col-lg-6">
+    <article class="feature-card feature-card--alt h-100">
+      <div class="feature-card__media">
+        <img
+          src="{% static 'gestion/img/libros.jpg' %}"
+          alt=""
+          class="feature-card__photo"
+          width="900"
+          height="600"
+          loading="lazy">
+        <div class="feature-card__shade feature-card__shade--b" aria-hidden="true"></div>
+        <div class="feature-card__badge feature-card__badge--b">Catálogo</div>
+        <h2 class="feature-card__title font-display">Libros</h2>
+      </div>
+      <div class="feature-card__body">
+        <p class="feature-card__text text-muted mb-4">
+          Título, género, ISBN y vínculo al autor: la ficha bibliográfica lista para exponer en clase o entregar.
+        </p>
+        <div class="d-grid gap-2">
+          <a class="btn btn-outline-brand rounded-pill py-2 fw-semibold" href="{% url 'lista_libros' %}">Ir a libros</a>
+          <a class="btn btn-link text-decoration-none text-secondary-emphasis small py-1" href="{% url 'crear_libro' %}">Registrar libro nuevo →</a>
+        </div>
+      </div>
+    </article>
   </div>
 </div>
+
 {% endblock %}

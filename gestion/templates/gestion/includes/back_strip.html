@@ -1,0 +1,11 @@
+{# Navegación rápida al inicio — Autores / Libros #}
+<nav class="back-strip d-flex align-items-center flex-wrap gap-2 mb-4" aria-label="Ruta">
+  <a href="{% url 'home' %}" class="back-home-link">
+    <span class="back-home-ico" aria-hidden="true"></span>
+    <span>Inicio</span>
+  </a>
+  {% if section_label %}
+  <span class="back-chev text-muted" aria-hidden="true"></span>
+  <span class="small text-muted fw-medium">{{ section_label }}</span>
+  {% endif %}
+</nav>

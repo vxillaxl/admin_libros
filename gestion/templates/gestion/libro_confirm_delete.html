@@ -1,14 +1,16 @@
 {% extends "gestion/base.html" %}
 {% block title %}Eliminar libro{% endblock %}
 {% block content %}
-<h1 class="h3 mb-3">Eliminar libro</h1>
-<div class="card border-danger shadow-sm">
-  <div class="card-body">
-    <p>¿Desea eliminar <strong>{{ libro.titulo }}</strong>?</p>
+{% include "gestion/includes/back_strip.html" with section_label="Libros" %}
+<p class="text-uppercase small text-danger fw-semibold mb-1 letter-space">Confirmar</p>
+<h1 class="h3 mb-4 text-slate font-display">Eliminar libro</h1>
+<div class="card card-list border border-danger border-opacity-25">
+  <div class="card-body p-4 p-md-5">
+    <p class="text-muted mb-4">¿Seguro que deseas eliminar <strong class="text-slate">{{ libro.titulo }}</strong> del catálogo?</p>
     <form method="post">
       {% csrf_token %}
-      <button type="submit" class="btn btn-danger">Sí, eliminar</button>
-      <a class="btn btn-outline-secondary" href="{% url 'lista_libros' %}">Cancelar</a>
+      <button type="submit" class="btn btn-danger rounded-pill px-4">Sí, eliminar</button>
+      <a class="btn btn-link text-muted" href="{% url 'lista_libros' %}">Cancelar</a>
     </form>
   </div>
 </div>
