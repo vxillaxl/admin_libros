@@ -1,0 +1,8 @@
+/* Ajustes menores sobre Bootstrap */
+textarea.form-control {
+  min-height: 120px;
+}
+
+.card {
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
