@@ -1,0 +1,13 @@
+{% extends "gestion/base.html" %}
+{% block title %}Inicio · Gestión de libros{% endblock %}
+{% block content %}
+<div class="p-4 p-md-5 bg-white rounded-3 shadow-sm">
+  <h1 class="h2 mb-3">Taller Django — Libros y autores</h1>
+  <p class="lead text-secondary mb-4">Autores con vistas por funciones; libros con vistas por clases (<code>ListView</code>, <code>CreateView</code>, <code>UpdateView</code>, <code>DeleteView</code>).</p>
+  <div class="d-flex flex-wrap gap-2">
+    <a class="btn btn-primary" href="{% url 'lista_autores' %}">Ver autores</a>
+    <a class="btn btn-outline-primary" href="{% url 'lista_libros' %}">Ver libros</a>
+    <a class="btn btn-outline-secondary" href="/admin/">Panel admin</a>
+  </div>
+</div>
+{% endblock %}
