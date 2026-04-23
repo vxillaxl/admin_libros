@@ -1,0 +1,17 @@
+# Opcional: despliegue desde el Blueprint de Render ("New +" -> Blueprint).
+# Tras crear el Web Service en el panel también puedes pegar estos valores a mano.
+services:
+  - type: web
+    name: admin-libros
+    runtime: python
+    plan: free
+    region: oregon
+    buildCommand: pip install -r requirements.txt && python manage.py collectstatic --noinput
+    startCommand: gunicorn admin_libros.wsgi:application --bind 0.0.0.0:$PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.12.8"
+      - key: DJANGO_SETTINGS_MODULE
+        value: admin_libros.settings
+      - key: DJANGO_DEBUG
+        value: "false"
