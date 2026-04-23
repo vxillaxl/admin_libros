@@ -7,6 +7,8 @@ services:
     plan: free
     region: oregon
     buildCommand: pip install -r requirements.txt && python manage.py collectstatic --noinput
+    # Crea tablas (Autor, Libro, etc.) en la BD antes de levantar Gunicorn
+    preDeployCommand: python manage.py migrate --noinput
     startCommand: gunicorn admin_libros.wsgi:application --bind 0.0.0.0:$PORT
     envVars:
       - key: PYTHON_VERSION
