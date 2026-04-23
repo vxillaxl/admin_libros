@@ -1,0 +1,25 @@
+{% extends "gestion/base.html" %}
+{% block title %}{% if object %}Editar autor{% else %}Nuevo autor{% endif %}{% endblock %}
+{% block content %}
+<h1 class="h3 mb-3">{% if object %}Editar autor{% else %}Nuevo autor{% endif %}</h1>
+<div class="card shadow-sm">
+  <div class="card-body">
+    <form method="post" novalidate>
+      {% csrf_token %}
+      {% if form.non_field_errors %}
+        <div class="alert alert-danger">{{ form.non_field_errors }}</div>
+      {% endif %}
+      {% for field in form %}
+        <div class="mb-3">
+          <label class="form-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+          {{ field.errors }}
+          {{ field }}
+          {% if field.help_text %}<div class="form-text">{{ field.help_text }}</div>{% endif %}
+        </div>
+      {% endfor %}
+      <button type="submit" class="btn btn-primary">Guardar</button>
+      <a class="btn btn-link" href="{% url 'lista_autores' %}">Cancelar</a>
+    </form>
+  </div>
+</div>
+{% endblock %}
