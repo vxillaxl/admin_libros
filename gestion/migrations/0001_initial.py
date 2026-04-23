@@ -1,4 +1,4 @@
-# Generated for Taller Django — libros
+# Modelos iniciales: Autor y Libro (app gestion).
 
 import django.db.models.deletion
 from django.db import migrations, models
