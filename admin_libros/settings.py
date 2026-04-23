@@ -16,17 +16,31 @@ SECRET_KEY = os.environ.get(
 
 DEBUG = os.environ.get("DJANGO_DEBUG", "true").lower() in ("1", "true", "yes")
 
-ALLOWED_HOSTS = [
-    h.strip()
-    for h in os.environ.get("DJANGO_ALLOWED_HOSTS", "localhost,127.0.0.1").split(",")
-    if h.strip()
-]
+_allowed_raw = os.environ.get("DJANGO_ALLOWED_HOSTS", "localhost,127.0.0.1")
+ALLOWED_HOSTS = [h.strip() for h in _allowed_raw.split(",") if h.strip()]
 
-CSRF_TRUSTED_ORIGINS = [
-    o.strip()
-    for o in os.environ.get("DJANGO_CSRF_TRUSTED_ORIGINS", "").split(",")
-    if o.strip()
-]
+# Render inyecta RENDER=true y RENDER_EXTERNAL_HOSTNAME (ej. admin-libros.onrender.com).
+if os.environ.get("RENDER"):
+    _ext = os.environ.get("RENDER_EXTERNAL_HOSTNAME", "").strip()
+    if _ext and _ext not in ALLOWED_HOSTS:
+        ALLOWED_HOSTS.append(_ext)
+    # Permite el subdominio del servicio sin copiar/pegar en variables cada vez.
+    if ".onrender.com" not in ALLOWED_HOSTS:
+        ALLOWED_HOSTS.append(".onrender.com")
+
+ALLOWED_HOSTS = list(dict.fromkeys(ALLOWED_HOSTS))
+
+_csrf_raw = os.environ.get("DJANGO_CSRF_TRUSTED_ORIGINS", "")
+CSRF_TRUSTED_ORIGINS = [o.strip() for o in _csrf_raw.split(",") if o.strip()]
+
+if os.environ.get("RENDER"):
+    _ext = os.environ.get("RENDER_EXTERNAL_HOSTNAME", "").strip()
+    if _ext:
+        _origin = f"https://{_ext}"
+        if _origin not in CSRF_TRUSTED_ORIGINS:
+            CSRF_TRUSTED_ORIGINS.append(_origin)
+
+CSRF_TRUSTED_ORIGINS = list(dict.fromkeys(CSRF_TRUSTED_ORIGINS))
 
 # Render y otros proxies HTTPS
 SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
