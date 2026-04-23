@@ -5,14 +5,14 @@
 
 <section class="home-hero row align-items-center g-4 g-lg-5 mb-5 mb-lg-6">
   <div class="col-lg-6 text-center text-lg-start">
-    <span class="home-kicker d-inline-block mb-3">Biblioteca · catálogo en línea</span>
-    <h1 class="home-title font-display mb-3">Donde los autores y los libros se encuentran</h1>
+    <span class="home-kicker d-inline-block mb-3">Catálogo</span>
+    <h1 class="home-title font-display mb-3">Autores y libros</h1>
     <p class="home-lead text-muted mb-4">
-      Un espacio limpio para consultar, registrar y actualizar fichas: autores con su perfil y obras enlazadas a cada libro.
+      Listado de autores y libros con datos básicos. Entra a cada sección o da de alta datos nuevos.
     </p>
     <div class="d-flex flex-wrap justify-content-center justify-content-lg-start gap-2">
-      <a class="btn btn-brand btn-lg rounded-pill px-4" href="{% url 'lista_autores' %}">Explorar autores</a>
-      <a class="btn btn-outline-brand btn-lg rounded-pill px-4" href="{% url 'lista_libros' %}">Ver catálogo</a>
+      <a class="btn btn-brand btn-lg rounded-pill px-4" href="{% url 'lista_autores' %}">Autores</a>
+      <a class="btn btn-outline-brand btn-lg rounded-pill px-4" href="{% url 'lista_libros' %}">Libros</a>
     </div>
   </div>
   <div class="col-lg-6">
@@ -23,18 +23,18 @@
           width="960"
           height="720"
           class="home-hero-img"
-          alt="Interior de biblioteca con estanterías"
+          alt="Biblioteca"
           loading="eager">
       </div>
       <figcaption class="home-hero-caption small text-muted mt-3 text-center text-lg-start">
-        Sala de lectura y estanterías — imagen de portada del catálogo.
+        Fotografía de biblioteca (decoración de la página).
       </figcaption>
     </figure>
   </div>
 </section>
 
 <div class="home-section-label text-center mb-4">
-  <span class="font-display section-pill">Áreas del sistema</span>
+  <span class="font-display section-pill">Menú principal</span>
 </div>
 
 <div class="row g-4 justify-content-center align-items-stretch pb-2">
@@ -49,16 +49,17 @@
           height="600"
           loading="lazy">
         <div class="feature-card__shade feature-card__shade--a" aria-hidden="true"></div>
-        <div class="feature-card__badge">Perfiles</div>
+        <div class="feature-card__badge">Autores</div>
         <h2 class="feature-card__title font-display">Autores</h2>
       </div>
       <div class="feature-card__body">
         <p class="feature-card__text text-muted mb-4">
-          Nombre, nacionalidad y biografía visibles en catálogo; el correo queda guardado para uso interno del sistema (formulario y administración).
+          Alta, baja y edición por formulario. En la lista pública solo aparece nombre y país; el correo va en el formulario.
+
         </p>
         <div class="d-grid gap-2">
           <a class="btn btn-brand rounded-pill py-2 fw-semibold" href="{% url 'lista_autores' %}">Ir a autores</a>
-          <a class="btn btn-link text-decoration-none text-secondary-emphasis small py-1" href="{% url 'crear_autor' %}">Añadir autor nuevo →</a>
+          <a class="btn btn-link text-decoration-none text-secondary-emphasis small py-1" href="{% url 'crear_autor' %}">Nuevo autor →</a>
         </div>
       </div>
     </article>
@@ -75,16 +76,17 @@
           height="600"
           loading="lazy">
         <div class="feature-card__shade feature-card__shade--b" aria-hidden="true"></div>
-        <div class="feature-card__badge feature-card__badge--b">Catálogo</div>
+        <div class="feature-card__badge feature-card__badge--b">Libros</div>
         <h2 class="feature-card__title font-display">Libros</h2>
       </div>
       <div class="feature-card__body">
         <p class="feature-card__text text-muted mb-4">
-          Título, género, ISBN y vínculo al autor: la ficha bibliográfica lista para exponer en clase o entregar.
+          Título, fecha, género, ISBN y autor. Mismo esquema: lista, alta y edición.
+
         </p>
         <div class="d-grid gap-2">
           <a class="btn btn-outline-brand rounded-pill py-2 fw-semibold" href="{% url 'lista_libros' %}">Ir a libros</a>
-          <a class="btn btn-link text-decoration-none text-secondary-emphasis small py-1" href="{% url 'crear_libro' %}">Registrar libro nuevo →</a>
+          <a class="btn btn-link text-decoration-none text-secondary-emphasis small py-1" href="{% url 'crear_libro' %}">Nuevo libro →</a>
         </div>
       </div>
     </article>
